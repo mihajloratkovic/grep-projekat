@@ -18,16 +18,29 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-char line[MAX_LINE];
-int line_number = 1;
-while (fgets(line, MAX_LINE, fp)) {
-    if (strstr(line, search)) {
-        printf("%d: %s", line_number, line);
+    char line[MAX_LINE];
+    int line_number = 1;
+    int count = 0; // Dodato: brojač pojavljivanja reči
+
+    while (fgets(line, MAX_LINE, fp)) {
+        if (strstr(line, search)) {
+            printf("%d: %s", line_number, line);
+
+            // Dodato: brojanje pojavljivanja u liniji
+            char *ptr = line;
+            while ((ptr = strstr(ptr, search)) != NULL) {
+                count++;
+                ptr += strlen(search);
+            }
+        }
+        line_number++;
     }
-    line_number++;
-}
 
     fclose(fp);
+
+    // Dodato: ispis ukupnog broja pojavljivanja
+    printf("\nUkupan broj pojavljivanja reči '%s': %d\n", search, count);
+
     return 0;
 }
 
