@@ -18,12 +18,14 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    char line[MAX_LINE];
-    while (fgets(line, MAX_LINE, fp)) {
-        if (strstr(line, search)) {
-            printf("%s", line);
-        }
+char line[MAX_LINE];
+int line_number = 1;
+while (fgets(line, MAX_LINE, fp)) {
+    if (strstr(line, search)) {
+        printf("%d: %s", line_number, line);
     }
+    line_number++;
+}
 
     fclose(fp);
     return 0;
