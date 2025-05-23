@@ -1,0 +1,4 @@
+Ovo je test linija.
+Ova linija sadrži rec.
+Još jedna linija bez te reči.
+Završna linija sa rec.
